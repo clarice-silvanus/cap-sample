@@ -1,0 +1,30 @@
+{
+  "definitions": {
+    "DemoService": {
+      "@source": "ServiceDemo.cds",
+      "kind": "service"
+    },
+    "DemoService.DemoEntity": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 111
+        },
+        "descr": {
+          "type": "cds.String",
+          "length": 1111
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v5.9.2",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}
