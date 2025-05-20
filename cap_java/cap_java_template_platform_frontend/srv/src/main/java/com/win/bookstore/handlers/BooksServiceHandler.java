@@ -1,4 +1,4 @@
-package com.win.template_platform.handlers;
+package com.win.bookstore.handlers;
 
 import java.util.Map;
 

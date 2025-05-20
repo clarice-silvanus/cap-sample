@@ -1,9 +1,9 @@
-namespace com.win.template;
+namespace com.win.bookstore;
 
-using {com.win.template as temp} from '../index';
+using {com.win.bookstore as bs} from '../index';
 
 
-type rating_enum : temp.rating enum {
+type rating_enum : bs.rating enum {
     Best  = 5;
     Good  = 4;
     Avg   = 3;

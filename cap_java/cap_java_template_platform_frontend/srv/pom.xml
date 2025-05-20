@@ -2,15 +2,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>template_platform-parent</artifactId>
+		<artifactId>bookstore-parent</artifactId>
 		<groupId>com.win</groupId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>template_platform</artifactId>
+	<artifactId>bookstore</artifactId>
 	<packaging>jar</packaging>
 
-	<name>template_platform</name>
+	<name>bookstore</name>
 
 	<!-- ACTUAL DEPENDENCIES -->
 	<dependencies>

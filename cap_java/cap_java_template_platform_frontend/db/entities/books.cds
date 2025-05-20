@@ -1,4 +1,4 @@
-namespace com.win.template;
+namespace com.win.bookstore;
 
 using {
     cuid,
@@ -6,18 +6,18 @@ using {
     managed
 } from '@sap/cds/common';
 
-using {com.win.template as temp} from '../index';
+using {com.win.bookstore as bs} from '../index';
 
 @fiori.draft.enabled
 entity Books : cuid, managed {
-    title        : localized temp.title;
-    descr        : localized temp.description;
+    title        : localized bs.title;
+    descr        : localized bs.description;
     stock        : Integer;
-    price        : temp.price;
+    price        : bs.price;
     currency     : Currency;
-    rating       : temp.rating;
-    review       : Association to many temp.Reviews;
-    isReviewable : temp.Tech_Boolean not null default true;
+    rating       : bs.rating;
+    review       : Association to many bs.Reviews;
+    isReviewable : bs.Tech_Boolean not null default true;
 }
 
 // input validation

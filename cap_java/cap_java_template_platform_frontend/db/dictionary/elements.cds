@@ -1,4 +1,4 @@
-namespace com.win.template;
+namespace com.win.bookstore;
 
 //String variables
 type title       : String(111);
