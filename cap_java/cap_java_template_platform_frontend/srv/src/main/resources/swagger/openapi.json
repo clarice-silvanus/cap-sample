@@ -138,8 +138,6 @@
                   "currency_code desc",
                   "rating",
                   "rating desc",
-                  "review_ID",
-                  "review_ID desc",
                   "isReviewable",
                   "isReviewable desc",
                   "status_code",
@@ -172,7 +170,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -305,7 +302,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -2023,7 +2019,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -2280,7 +2275,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2359,7 +2354,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2422,7 +2417,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2649,7 +2644,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2803,12 +2798,6 @@
           "review@count": {
             "$ref": "#/components/schemas/count"
           },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
-            "nullable": true
-          },
           "isReviewable": {
             "type": "boolean",
             "default": true
@@ -2825,7 +2814,7 @@
             "type": "string",
             "maxLength": 1,
             "nullable": true,
-            "default": "Outdated"
+            "default": "O"
           },
           "isbn": {
             "type": "string",
@@ -2916,12 +2905,6 @@
             "x-sap-scale": 1,
             "nullable": true
           },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
-            "nullable": true
-          },
           "isbn": {
             "type": "string",
             "maxLength": 40,
@@ -2999,12 +2982,6 @@
             "example": 0,
             "x-sap-precision": 2,
             "x-sap-scale": 1,
-            "nullable": true
-          },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
             "nullable": true
           },
           "isbn": {
@@ -3346,7 +3323,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           },
           "texts": {
             "type": "array",
@@ -3393,7 +3370,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       },
