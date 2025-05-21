@@ -38,6 +38,9 @@
     },
     {
       "name": "status_texts"
+    },
+    {
+      "name": "Upload"
     }
   ],
   "paths": {
@@ -138,8 +141,6 @@
                   "currency_code desc",
                   "rating",
                   "rating desc",
-                  "review_ID",
-                  "review_ID desc",
                   "isReviewable",
                   "isReviewable desc",
                   "status_code",
@@ -172,7 +173,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -305,7 +305,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -2023,7 +2022,6 @@
                   "price",
                   "currency_code",
                   "rating",
-                  "review_ID",
                   "isReviewable",
                   "status_code",
                   "isbn"
@@ -2147,6 +2145,72 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/Upload": {
+      "get": {
+        "summary": "Retrieves upload.",
+        "tags": [
+          "Upload"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "csv"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved upload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookService.Upload"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Changes upload.",
+        "tags": [
+          "Upload"
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookService.Upload-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
@@ -2280,7 +2344,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2359,7 +2423,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2422,7 +2486,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2649,7 +2713,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       ],
@@ -2803,12 +2867,6 @@
           "review@count": {
             "$ref": "#/components/schemas/count"
           },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
-            "nullable": true
-          },
           "isReviewable": {
             "type": "boolean",
             "default": true
@@ -2825,7 +2883,7 @@
             "type": "string",
             "maxLength": 1,
             "nullable": true,
-            "default": "Outdated"
+            "default": "O"
           },
           "isbn": {
             "type": "string",
@@ -2916,12 +2974,6 @@
             "x-sap-scale": 1,
             "nullable": true
           },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
-            "nullable": true
-          },
           "isbn": {
             "type": "string",
             "maxLength": 40,
@@ -2999,12 +3051,6 @@
             "example": 0,
             "x-sap-precision": 2,
             "x-sap-scale": 1,
-            "nullable": true
-          },
-          "review_ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef",
             "nullable": true
           },
           "isbn": {
@@ -3324,6 +3370,28 @@
           }
         }
       },
+      "BookService.Upload": {
+        "title": "Upload",
+        "type": "object",
+        "properties": {
+          "csv": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          }
+        }
+      },
+      "BookService.Upload-update": {
+        "title": "Upload (for update)",
+        "type": "object",
+        "properties": {
+          "csv": {
+            "type": "string",
+            "format": "base64url",
+            "nullable": true
+          }
+        }
+      },
       "BookService.status": {
         "title": "Aspect for a code list with name and description\n\nSee https://cap.cloud.sap/docs/cds/common#aspect-codelist",
         "type": "object",
@@ -3346,7 +3414,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           },
           "texts": {
             "type": "array",
@@ -3393,7 +3461,7 @@
               "A",
               "X"
             ],
-            "default": "Outdated"
+            "default": "O"
           }
         }
       },
