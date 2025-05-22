@@ -345,6 +345,15 @@ annotate BrowserService.Books with @(
                 Label: '{i18n>Modifiedat}'
             }
         ]
+    },
+    Common                       : {
+        SideEffects #StockChanges: {
+            SourceProperties: [stock],
+            TargetProperties: [
+                'price',
+                'status_code'
+            ]
+        }
     }
 );
 
