@@ -1,0 +1,211 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "admin",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "dataSources": {
+            "AdminService": {
+                "uri": "/api/admin/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.fe.templates": {}
+            },
+            "minUI5Version": "1.122.1"
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "admin.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "AdminService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true,
+                    "groupProperties": {
+                        "default": {
+                            "submit": "Auto"
+                        }
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "PoList",
+                    "target": "PoList"
+                },
+                {
+                    "pattern": "Orders({key}):?query:",
+                    "name": "OrderDetails",
+                    "target": "OrderDetails"
+                },
+                {
+                    "pattern": "Orders({key})/items({key2}):?query:",
+                    "name": "Orders_itemsObjectPage",
+                    "target": "Orders_itemsObjectPage"
+                }
+            ],
+            "targets": {
+                "PoList": {
+                    "type": "Component",
+                    "id": "PoList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Orders",
+                            "navigation": {
+                                "Orders": {
+                                    "detail": {
+                                        "route": "OrderDetails"
+                                    }
+                                }
+                            },
+                            "content": {
+                                "header": {
+                                    "actions": {}
+                                }
+                            },
+                            "initialLoad": "Enabled",
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "selectAll": false,
+                                        "selectionMode": "Multi"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "OrderDetails": {
+                    "type": "Component",
+                    "id": "OrderDetails",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/Orders",
+                            "navigation": {
+                                "items": {
+                                    "detail": {
+                                        "route": "Orders_itemsObjectPage"
+                                    }
+                                }
+                            },
+                            "content": {
+                                "header": {
+                                    "anchorBarVisible": true
+                                }
+                            },
+                            "editableHeaderContent": false,
+                            "sectionLayout": "Page",
+                            "controlConfiguration": {
+                                "items/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "Inline"
+                                        }
+                                    }
+                                },
+                                "attachments/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "Inline",
+                                            "inlineCreationRowsHiddenInEditMode": true
+                                        },
+                                        "selectAll": true,
+                                        "selectionMode": "Multi"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Orders_itemsObjectPage": {
+                    "type": "Component",
+                    "id": "Orders_itemsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/Orders/items",
+                            "navigation": {},
+                            "controlConfiguration": {
+                                "accounts/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "creationMode": {
+                                            "createAtEnd": true
+                                        }
+                                    }
+                                },
+                                "attachments/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "Inline",
+                                            "inlineCreationRowsHiddenInEditMode": true
+                                        },
+                                        "selectAll": true,
+                                        "selectionMode": "Multi"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "fullWidth": false,
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    }
+}
