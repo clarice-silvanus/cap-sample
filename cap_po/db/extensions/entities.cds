@@ -1,10 +1,15 @@
-using {com.win.template as temp} from '../index';
+using {com.win.po as po} from '../index';
 
-extend temp.Books with {
-    isbn : temp.ISBN;
+extend po.Orders with {
+    status             : Association to po.status  @readonly  @Core.Computed;
+    virtual statusIcon : Integer;
+    isEditable         : po.Tech_Boolean not null default true @Core.Computed;
+    attachments        : Composition of many po.Attachments
+                             on attachments.order = $self;
 }
 
-// input validation
-annotate temp.Books with {
-    isbn @mandatory;
+extend po.OrderItems with {
+    virtual stockIcon : Integer;
+    attachments       : Composition of many po.Attachments
+                            on attachments.orderItem = $self;
 }

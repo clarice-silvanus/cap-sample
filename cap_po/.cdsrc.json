@@ -1,5 +1,5 @@
 {
-  "cdsc" : {
-    "betterSqliteSessionVariables" : true
-  }
+    "sql": {
+        "native_hana_associations" : false
+    }
 }

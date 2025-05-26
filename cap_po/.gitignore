@@ -2,6 +2,8 @@
 **/edmx/
 *.db
 *.sqlite
+*.sqlite-wal
+*.sqlite-shm
 schema*.sql
 default-env.json
 
