@@ -1,9 +1,9 @@
 {
     "defaultRenderer": "fiori2",
     "applications": {
-        "manage-books": {
-            "title": "Admin",
-            "description": "Manage purchase orders",
+        "manage-po": {
+            "title": "Admin PO",
+            "description": "Manage Purchase Orders",
             "additionalInformation": "SAPUI5.Component=admin",
             "applicationType": "URL",
             "url": "/admin/webapp",
