@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Service for namespace AdminService",
-    "description": "This service is located at [/api/books/](/api/books/)",
+    "description": "This service is located at [/api/admin/](/api/admin/)",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -10,7 +10,7 @@
   "x-sap-shortText": "Service for namespace AdminService",
   "servers": [
     {
-      "url": "/api/books"
+      "url": "/api/admin"
     }
   ],
   "tags": [

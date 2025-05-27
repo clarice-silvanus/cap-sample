@@ -141,7 +141,7 @@
                             <commands>
                                 <command>build --for java</command>
                                 <command>deploy --to sqlite --dry &gt; "${project.basedir}/src/main/resources/schema-sqlite.sql"</command>
-                                <command>compile srv/admin-service.cds -2 openapi --openapi:url /api/books &gt; "${project.basedir}/src/main/resources/swagger/openapi.json"</command>
+                                <command>compile srv/admin-service.cds -2 openapi --openapi:url /api/admin &gt; "${project.basedir}/src/main/resources/swagger/openapi.json"</command>
                             </commands>
 						</configuration>
 					</execution>
@@ -157,6 +157,26 @@
 					</execution>
 				</executions>
 			</plugin>
+            <!-- BUILD HELPER PLUGIN -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>    
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/src/gen/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
